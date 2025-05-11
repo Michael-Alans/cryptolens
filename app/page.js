@@ -7,8 +7,8 @@ export default async function Homepage() {
   const currencies = await res.json();
 
   const currencyElm = currencies.map(currency => (
-    <Link href={currency.id}>
-      <div className="crypto-card" key={currency.id}>
+    <Link href={currency.id} key={currency.id}>
+      <div className="crypto-card" >
       <div className="card-header">
         <Image 
           src={currency.image} 
