@@ -1,0 +1,349 @@
+:root {
+  --mainbluee: rgb(4, 4, 17);
+  --maincyan:rgba(0, 255, 255);
+  --cardbluee:rgb(5, 5, 34);
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--mainbluee);
+  color: white;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem;
+  font-family: "Poppins", sans-serif;
+}
+
+#logo {
+  font-size: 1.5rem;
+  color: var(--maincyan);
+  font-family: 'Pacifico', cursive;
+}
+
+.nav-link {
+  font-size: 1.2rem;
+  font-family: "Achivo black", sans-serif;
+  color: white;
+  font-weight: 700;
+  margin-right: 10px;
+  text-decoration: none;
+}
+
+
+
+/* Main Container */
+.crypto-dashboard {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  font-family: 'Inter', -apple-system, sans-serif;
+}
+
+.dashboard-title {
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 2rem;
+  color: #ffffff;
+  font-weight: 600;
+}
+
+/* Cards Grid */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+/* Individual Card */
+.crypto-card {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s, box-shadow 0.2s;
+  border: 1px solid #eaeaea;
+}
+
+.crypto-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+}
+
+/* Card Header */
+.card-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1.25rem;
+  gap: 12px;
+}
+
+.coin-logo {
+  border-radius: 50%;
+  object-fit: cover;
+  background: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.coin-titles {
+  flex-grow: 1;
+}
+
+.coin-name {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #1a1a1a;
+}
+
+.coin-symbol {
+  font-size: 0.85rem;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.price-change {
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+}
+
+.price-change.positive {
+  color: #10b981;
+  background: rgba(16, 185, 129, 0.1);
+}
+
+.price-change.negative {
+  color: #ef4444;
+  background: rgba(239, 68, 68, 0.1);
+}
+
+/* Card Body */
+.current-price {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1a1a1a;
+}
+
+.market-stats {
+  display: flex;
+  gap: 1rem;
+  margin-top: 0.5rem;
+  font-size: 0.85rem;
+  color: #666;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .cards-grid {
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  }
+}
+
+.detail-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  font-family: 'Inter', system-ui, sans-serif;
+  color: #1a1a1a;
+}
+
+/* Header Styles */
+.coin-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.coin-identity {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.coin-logo {
+  border-radius: 50%;
+  object-fit: contain;
+}
+
+.coin-identity h1 {
+  font-size: 2rem;
+  margin: 0;
+  color: white;
+}
+
+.coin-identity span {
+  color: #666;
+  font-size: 1.2rem;
+}
+
+.coin-rank {
+  color: #666;
+  font-size: 0.9rem;
+  margin-top: 0.25rem;
+}
+
+.back-button {
+  background: #f5f5f5;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  transition: background 0.2s;
+}
+
+.back-button:hover {
+  background: #eaeaea;
+}
+
+/* Price Section */
+.price-section {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  margin-bottom: 2rem;
+}
+
+.current-price {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.current-price h2 {
+  font-size: 2.5rem;
+  margin: 0;
+}
+
+.price-change {
+  font-size: 1.1rem;
+  font-weight: 600;
+  padding: 0.25rem 0.75rem;
+  border-radius: 6px;
+}
+
+.price-range {
+  color: #666;
+  font-size: 0.95rem;
+}
+
+/* Stats Grid */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+.stat-card {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.stat-card h3 {
+  color: #666;
+  font-size: 0.95rem;
+  margin: 0 0 0.5rem 0;
+  font-weight: 500;
+}
+
+.stat-card p {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.secondary-stat {
+  font-size: 0.9rem !important;
+  color: #666;
+  margin-top: 0.25rem !important;
+}
+
+/* Info Sections */
+.info-sections {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 2rem;
+}
+
+.description h3, .links h3 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+}
+
+.description p {
+  line-height: 1.6;
+  color: #333;
+}
+
+.links-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.75rem;
+}
+
+.links-grid a {
+  display: block;
+  padding: 0.75rem;
+  background: #f5f5f5;
+  border-radius: 8px;
+  text-decoration: none;
+  color: #2563eb;
+  font-size: 0.9rem;
+  transition: background 0.2s;
+}
+
+.links-grid a:hover {
+  background: #e0e7ff;
+}
+
+/* Color Classes */
+.positive {
+  color: #10b981;
+  background: rgba(16, 185, 129, 0.1);
+}
+
+.negative {
+  color: #ef4444;
+  background: rgba(239, 68, 68, 0.1);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .info-sections {
+    grid-template-columns: 1fr;
+  }
+  
+  .stats-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  
+  .current-price {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+}
+
+a {
+  text-decoration: none;
+}

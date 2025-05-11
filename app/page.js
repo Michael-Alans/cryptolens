@@ -1,95 +1,50 @@
 import Image from "next/image";
-import styles from "./page.module.css";
+import Link from "next/link";
 
-export default function Home() {
-  return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
+
+export default async function Homepage() {
+  const res = await fetch("https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=20&page=1&sparkline=true");
+  const currencies = await res.json();
+
+  const currencyElm = currencies.map(currency => (
+    <Link href={currency.id}>
+      <div className="crypto-card" key={currency.id}>
+      <div className="card-header">
+        <Image 
+          src={currency.image} 
+          alt={`${currency.name} logo`}
+          width={48}
+          height={48}
+          className="coin-logo"
         />
-        <ol>
-          <li>
-            Get started by editing <code>app/page.js</code>.
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.secondary}
-          >
-            Read our docs
-          </a>
+        <div className="coin-titles">
+          <h3 className="coin-name">{currency.name}</h3>
+          <span className="coin-symbol">{currency.symbol.toUpperCase()}</span>
         </div>
-      </main>
-      <footer className={styles.footer}>
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+        <span className={`price-change ${currency.price_change_percentage_24h >= 0 ? 'positive' : 'negative'}`}>
+          {currency.price_change_percentage_24h >= 0 ? '↑' : '↓'} {Math.abs(currency.price_change_percentage_24h).toFixed(2)}%
+        </span>
+      </div>
+
+      <div className="card-body">
+        <div className="price-section">
+          <span className="current-price">${currency.current_price.toLocaleString()}</span>
+          <div className="market-stats">
+            <span>MCap: ${(currency.market_cap / 1000000000).toFixed(2)}B</span>
+            <span>Vol: ${(currency.total_volume / 1000000).toFixed(2)}M</span>
+          </div>
+        </div>
+      </div>
     </div>
+    </Link>
+  ));
+
+  return (
+    <main className="crypto-dashboard">
+      <h1 className="dashboard-title">Cryptocurrency Market</h1>
+      <div className="cards-grid">
+        {currencyElm}
+      </div>
+    </main>
   );
 }
