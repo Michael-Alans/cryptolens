@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 export default async function CurrencyDetailPage({ params }) {
-  const { id } = params;
+  const { id } =  params;
   const res = await fetch(
     `https://api.coingecko.com/api/v3/coins/${id}?localization=false&tickers=false&market_data=true&community_data=false&developer_data=false&sparkline=true`,
     { next: { revalidate: 60 } } // Revalidate every minute

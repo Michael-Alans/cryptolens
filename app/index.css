@@ -4,7 +4,14 @@
   --cardbluee:rgb(5, 5, 34);
 }
 
-body {
+body.light {
+  margin: 0;
+  padding: 0;
+  background-color: white;
+  color: var(--mainbluee);
+}
+
+body.dark {
   margin: 0;
   padding: 0;
   background-color: var(--mainbluee);
@@ -21,6 +28,11 @@ body {
   align-items: center;
   padding: 2rem;
   font-family: "Poppins", sans-serif;
+}
+
+.header  button {
+  border: none;
+  background: transparent;
 }
 
 #logo {
